@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS rpa_blogdb;
+CREATE DATABASE rpa_blogdb;
