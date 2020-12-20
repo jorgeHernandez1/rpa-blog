@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const Sequelize = require("sequelize");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('sequelize');
 
 class BlogPost extends Model {}
 
@@ -17,16 +17,16 @@ BlogPost.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
-        key: "id",
+        model: 'user',
+        key: 'id',
       },
     },
   },
   {
     sequelize,
     underscored: true,
-    modelName: "blog_post",
-  }
+    modelName: 'blog_post',
+  },
 );
 
 module.exports = BlogPost;
