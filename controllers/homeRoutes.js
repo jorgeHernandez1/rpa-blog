@@ -3,8 +3,20 @@ const { User, BlogPost } = require('../models');
 
 router.get('/', async (req, res) => {
   try {
-    res.render('layouts/main', {
+    const dbBlogPosts = await BlogPost.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name', 'id'],
+        },
+      ],
+    });
+    // Remove noise from db
+    const blogPosts = dbBlogPosts.map((blogPost) => blogPost.get({ plain: true }));
+    // render homepage along with main layout
+    res.render('homepage', {
       // Pass the logged in flag to the template
+      blogPosts,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
