@@ -29,13 +29,17 @@
                 {{#if logged_in}}
                 <a class="nav-link" href="#">My Dashboard</a>
                 <a class="nav-link" href="#">Logout</a>
-                {{#else}}
+                {{else}}
                 <a class="nav-link" href="#">Login</a>
-                {{#/if}}
+                {{/if}}
               </div>
             </div>
 
         </nav>
+        <!--Insertion point for handlebars render-->
+        <main class="container container-fluid mt-5">
+          {{{ body }}}
+        </main>
       </header>
       
     </div>

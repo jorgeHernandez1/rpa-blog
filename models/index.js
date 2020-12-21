@@ -6,5 +6,9 @@ User.hasMany(BlogPost, {
   foreignKey: 'user_id',
 });
 
+BlogPost.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
 // Export all models as an object
 module.exports = { User, BlogPost };

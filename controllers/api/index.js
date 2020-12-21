@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // Set user routes to user-routes folder
-const userRoutes = require('./user-routes');
+const userRoutes = require('./userRoutes');
 
 router.use('/users', userRoutes);
 

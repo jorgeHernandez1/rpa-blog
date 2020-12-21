@@ -1,6 +1,9 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
+// Handlebars
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({});
 
 // Create new sequlize store using express session package
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -23,6 +26,10 @@ const sess = {
 // Set Midleware
 // Add express-session and store as Express.js
 app.use(session(sess));
+
+// Set Handlebars as rendering engine
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
