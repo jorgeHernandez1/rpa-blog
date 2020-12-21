@@ -35,14 +35,18 @@ router.post('/login', async (req, res) => {
     });
     // Check to make sure user exists in db
     if (!userData) {
-      res.status(400).json({ message: 'Invalid email or password. Please try again.' });
+      res
+        .status(400)
+        .json({ message: 'Invalid email or password. Please try again.' });
       return;
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
     // Check to make sure password is correct
     if (!validPassword) {
-      res.status(400).json({ message: 'Invalid email or password. Please try again.' });
+      res
+        .status(400)
+        .json({ message: 'Invalid email or password. Please try again.' });
       return;
     }
     // Open and save db session with logged in varaibles
@@ -50,12 +54,29 @@ router.post('/login', async (req, res) => {
       req.session.loggedIn = true;
       req.email = userData.email;
 
-      res.status(200).json({ user: userData, message: 'You are now logged in.' });
+      res
+        .status(200)
+        .json({ user: userData, message: 'You are now logged in.' });
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 // Log Out
+router.post('/logout', async (req, res) => {
+  try {
+    if (req.session.loggedIn) {
+      // Destroy session varaibles
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
