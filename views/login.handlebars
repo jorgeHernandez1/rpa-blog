@@ -1,16 +1,50 @@
-<<div class="row">
-  <div class="col-xs-6 justify-content-center">
-    <form>
-    <div class="form-group">
-      <label for="email-login">Email address</label>
-      <input type="email" class="form-control" id="emailLogin" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="row justify-content-center">
+  <!-- Login -->
+  <div class="col-sm pl-0">
+     <div class="card">
+    <div class="card-header">
+        Login
+      </div>
+      <div class="card-body">
+        <form>
+      <div class="form-group">
+        <label for="email-login">Email address</label>
+        <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="pw-login">Password</label>
+        <input type="password" class="form-control" id="pw-login" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
     </div>
-    <div class="form-group">
-      <label for="login-pw">Password</label>
-      <input type="password" class="form-control" id="login-pw" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
   </div>
+  </div>
+  <!-- Signup -->
+<div class="col-sm pr-0">
+  <div class="card">
+    <div class="card-header">
+    Sign Up
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label for="name-signup">Display name</label>
+          <input type="name" class="form-control" id="name-signup" aria-describedby="emailHelp" placeholder="Enter display name">
+        </div>
+        <div class="form-group">
+          <label for="email-signup">Email address</label>
+          <input type="email" class="form-control" id="email-signup" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="pw-signup">Password</label>
+          <input type="password" class="form-control" id="pw-signup" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 </div>

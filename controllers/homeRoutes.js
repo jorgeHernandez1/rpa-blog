@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, BlogPost } = require('../models');
-
+// Homepage
 router.get('/', async (req, res) => {
   try {
     const dbBlogPosts = await BlogPost.findAll({
@@ -19,6 +19,19 @@ router.get('/', async (req, res) => {
       blogPosts,
       logged_in: req.session.logged_in,
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+// Login
+router.get('/login', async (req, res) =>{
+  try {
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+
+    res.render('login');
   } catch (err) {
     res.status(500).json(err);
   }
