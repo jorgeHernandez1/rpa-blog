@@ -7,11 +7,20 @@ class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+
+  toJSON() {
+    const user = { ...this.get() };
+    delete user.password;
+    delete user.createdAt;
+    delete user.updatedAt;
+    delete user.id;
+    return user;
+  }
 }
 
 User.init(
   {
-    username: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
