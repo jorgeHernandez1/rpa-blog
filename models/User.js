@@ -11,7 +11,7 @@ class User extends Model {
 
 User.init(
   {
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -37,12 +37,14 @@ User.init(
     hooks: {
       // hook will run before creation of user to encrypt password beofre sent to db
       beforeCreate: async (newUserData) => {
+        // eslint-disable-next-line no-param-reassign
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
     },
     sequelize,
     underscored: true,
+    freezeTableName: true,
     modelName: 'user',
   },
 );

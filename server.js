@@ -4,6 +4,7 @@ const session = require('express-session');
 
 // Create new sequlize store using express session package
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const routes = require('./controllers');
 const sequelize = require('./config/connection');
 
 const app = express();
@@ -27,7 +28,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(routes);
+
 // Initialize/Syncronize server to db
 sequelize.sync({ force: false }).then(() => {
+  // eslint-disable-next-line no-console
   app.listen(PORT, () => console.log('Listening now.'));
 });
