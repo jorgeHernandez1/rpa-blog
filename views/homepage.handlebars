@@ -7,11 +7,9 @@
   </div>
   
 {{#if logged_in}}
-  <div class="row justify-content-center">
-    <div class="col-6 text-center">
-      <a class="btn btn-primary btn-lg">+ New Post<a>
-    </div>
-  </div>
+  <!-- Add New Post Option -->
+  {{> new-post-button}}
+  {{> new-post-modal}}
 {{else}}
   <!--If user is not logged in they will get option to login or sign up-->
   <div class="row justify-content-center">
@@ -20,6 +18,7 @@
     </div>
   </div>
 {{/if}}
+
 <!--Render current blog posts-->
 {{#if blogPosts}}
   {{#each blogPosts as |bp|}}
