@@ -1,17 +1,18 @@
 const path = require('path');
 const express = require('express');
-const session = require('express-session');
-// Handlebars
 const exphbs = require('express-handlebars');
+
+const session = require('express-session');
 // Create new sequlize store using express session package
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const routes = require('./controllers');
 const sequelize = require('./config/connection');
-
-const hbs = exphbs.create({});
+const routes = require('./controllers');
+const helpers = require('./utils/helper');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+const hbs = exphbs.create({ helpers });
 
 const sess = {
   secret: 'Super Secret Tedska Doodle',
@@ -38,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 // Initialize/Syncronize server to db
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   // eslint-disable-next-line no-console
   app.listen(PORT, () => console.log('Listening now.'));
 });

@@ -5,18 +5,17 @@
       or useful. Join the site now and share your favorite method to automate or to share your thoughts on the current state of process automation.
     </p>
   </div>
-  
+
 {{#if logged_in}}
-  <!-- Add New Post Option -->
-  {{> new-post-button}}
-  {{> new-post-modal}}
+<!-- Add New Post Option -->
+{{> new-post-button}}
 {{else}}
-  <!--If user is not logged in they will get option to login or sign up-->
-  <div class="row justify-content-center">
-     <div class="col-6 text-center">
-      <a href="/login" class="btn btn-primary btn-lg">Sign Up/Login</a>
-    </div>
+<!--If user is not logged in they will get option to login or sign up-->
+<div class="row justify-content-center">
+  <div class="col-6 text-center">
+    <a href="/login" class="btn btn-primary btn-lg">Sign Up/Login</a>
   </div>
+</div>
 {{/if}}
 
 <!--Render current blog posts-->
@@ -24,4 +23,9 @@
   {{#each blogPosts as |bp|}}
     {{> blog-post-details}}
   {{/each}}
+{{/if}}
+
+{{#if logged_in}}
+  <!-- Add New Post Option -->
+  {{> new-post-modal}}
 {{/if}}
