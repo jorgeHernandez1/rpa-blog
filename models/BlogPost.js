@@ -16,6 +16,7 @@ BlogPost.init(
     // Create reference to user table
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'user',
         key: 'id',

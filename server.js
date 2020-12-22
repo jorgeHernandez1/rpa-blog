@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 // Initialize/Syncronize server to db
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   // eslint-disable-next-line no-console
   app.listen(PORT, () => console.log('Listening now.'));
 });
