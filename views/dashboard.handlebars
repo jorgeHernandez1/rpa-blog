@@ -1,0 +1,15 @@
+{{> new-post-button}}
+<!--Render current blog posts-->
+{{#if blogPosts}}
+  
+  <h2>All blog posts by {{user.name}</h2>
+  
+  {{#each blogPosts as |bp|}}
+    <a>
+      {{> blog-post-details}}
+    </a>
+  {{/each}}
+
+{{/if}}
+
+{{> new-post-modal}}
