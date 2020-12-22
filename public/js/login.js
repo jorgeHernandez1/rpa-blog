@@ -54,7 +54,6 @@ signUpBtn.addEventListener('click', async (e) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      console.log(response);
       document
         .querySelector('#sign-up-error')
         .textContent('An error occured. Please verify your entry and try again.');

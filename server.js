@@ -3,12 +3,12 @@ const express = require('express');
 const session = require('express-session');
 // Handlebars
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
-
 // Create new sequlize store using express session package
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
+
+const hbs = exphbs.create({});
 
 const app = express();
 const PORT = process.env.PORT || 3001;
