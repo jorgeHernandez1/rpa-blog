@@ -6,17 +6,17 @@
         Login
       </div>
       <div class="card-body">
+        <div id="login-error" class="error-div"></div>
         <form>
       <div class="form-group">
         <label for="email-login">Email address</label>
         <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
       <div class="form-group">
         <label for="pw-login">Password</label>
         <input type="password" class="form-control" id="pw-login" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary" id="loginBtn">Login</button>
     </form>
     </div>
   </div>
@@ -28,6 +28,7 @@
     Sign Up
     </div>
     <div class="card-body">
+      <div id="sign-up-error" class="error-div"></div>
       <form>
         <div class="form-group">
           <label for="name-signup">Display name</label>
@@ -41,10 +42,12 @@
           <label for="pw-signup">Password</label>
           <input type="password" class="form-control" id="pw-signup" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <button type="submit" class="btn btn-primary" id="signUpBtn">Sign Up</button>
       </form>
     </div>
   </div>
 </div>
 
 </div>
+
+<script src="/js/login.js"></script> 
