@@ -41,9 +41,11 @@ const populateDataToEdit = async (e) => {
   const editModal = $('#editPostModal');
   const clickedTitle = e.target.offsetParent.querySelector('.card-title').textContent.trim();
   const clickedBody = e.target.offsetParent.querySelector('.card-text').textContent.trim();
+  const clickedBPId = e.target.offsetParent.getAttribute('data-bp-id');
 
   editModal.find('#blog-post-title').val(clickedTitle);
   editModal.find('#blog-post-body').val(clickedBody);
+  editModal.attr('data-current-bp', clickedBPId);
   editModal.modal('show');
 };
 
@@ -53,11 +55,13 @@ const editBlogPost = async (e) => {
   const editModal = $('#editPostModal');
   const title = editModal.find('#blog-post-title').val().trim();
   const body = editModal.find('#blog-post-body').val().trim();
+  const bpId = editModal.attr('data-current-bp');
 
   if (title && body) {
     const userData = {
       title,
       post_body: body,
+      post_id: bpId,
     };
     // Send form data to create new post api
     const response = await fetch('/api/blogPost', {
