@@ -2,10 +2,10 @@
 <!--Render current blog posts-->
 {{#if blogPosts}}
   
-  <h2>All blog posts by {{user.name}</h2>
+  <h2>All blog posts by {{ blogPosts.[0].user.name}}</h2>
   
   {{#each blogPosts as |bp|}}
-    <a>
+    <a class="my-post">
       {{> blog-post-details}}
     </a>
   {{/each}}
@@ -13,3 +13,4 @@
 {{/if}}
 
 {{> new-post-modal}}
+{{> edit-post-modal}}
